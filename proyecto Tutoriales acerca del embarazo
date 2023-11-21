@@ -60,5 +60,5 @@ int main() {
         cout << "Número de pregunta inválido." << endl;
     }
 
-    return 0;
+    return 0;
 }
