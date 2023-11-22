@@ -1,0 +1,111 @@
+//Carrito de compras
+//Jose Daniel Andrews
+//Registro de Niñera
+//Adrian Padilla
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Producto {
+    string nombre;
+    float precio;
+    int cantidad;
+};
+
+Producto productos[] = {
+    {"Leche en polvo", 4.0, 1},
+    {"Pañales", 3.0, 1},
+    {"Biberon", 8.0, 1},
+    {"Mordedor", 9.0, 1},
+    {"Manta", 5.0, 1},
+    {"Chupete", 3.0, 1}
+    // ... (otros productos)
+};
+void tienda();
+void mostrarMetodosDePago();
+
+
+int main() {
+    tienda();
+
+    return 0;
+}
+
+void tienda() {
+    int totalProductos = sizeof(productos) / sizeof(productos[0]);
+    int opcion, cantidad, metodoPago, opcionEnvio;
+    float total = 0.0;
+    string direccion;
+    char seguir;
+
+    do {
+        for (int i = 0; i < totalProductos; i++) {
+            cout << "[" << i + 1 << "] " << productos[i].nombre << "\t\t - $" << productos[i].precio << endl;
+        }
+
+        cout << "Elegir producto (número): ";
+        cin >> opcion;
+        system("cls");
+        if (opcion > 0 && opcion <= totalProductos) {
+            cout << "Has elegido: " << productos[opcion - 1].nombre << endl;
+            cout << "Ingresar cantidad: ";
+            cin >> cantidad;
+            system("cls");
+            total += productos[opcion - 1].precio * cantidad;
+        }
+        else {
+            cout << "Opción inválida." << endl;
+            continue;
+        }
+
+        cout << "¿Desea agregar otro producto? (S/N): ";
+        cin >> seguir;
+        system("cls");
+    } while (seguir == 'S' || seguir == 's');
+
+    cout << endl;
+    cout << "Total a pagar: $" << total << endl;
+    cout << endl;
+
+    mostrarMetodosDePago();
+    cout << "Selecciona tu método de pago: ";
+    cin >> metodoPago;
+
+    string titular;
+    float ntarjeta, fechavence, cvv;
+    switch (metodoPago) {
+    case 1:
+        cout << "Introduce el titular de la tarjeta: " << endl;
+        cin.ignore();
+        getline(cin, titular);
+        cout << "Introduce el numero de tu tarjeta: " << endl;
+        cin >> ntarjeta;
+        cout << "Ingresa la fecha de vencimiento: " << endl;
+        cin >> fechavence;
+        cout << "Ingresa el cvv: " << endl;
+        cin >> cvv;
+        cin.ignore();
+        break;
+    case 2:
+        cout << "Escanea el siguiente codigo QR para procesar el pago" << endl;
+        break;
+    case 3:
+        cout << "Puede procesar el pago en efectivo cuando el pedido este en la direccion y fecha indicados" << endl;
+    default: cout << "Opcion Invalida" << endl;
+    }
+
+    cout << "Ingresar direccion: ";
+    cin.ignore();
+    getline(cin, direccion);
+
+    cout << "¡Gracias por tu compra!" << endl;
+    cout << "Vea el estado de su compra en el apartado de PEDIDOS" << endl;
+}
+void mostrarMetodosDePago() {
+    cout << "Métodos de Pago:\n";
+    cout << "1. Tarjeta de Crédito\n";
+    cout << "2. Qr\n";
+    cout << "3. Efectivo\n";
+
+}
