@@ -1,0 +1,148 @@
+//Buscador de Nombre
+//Airo Arroyo
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Estructura para representar un nombre con su significado
+struct NombreConSignificado {
+    string nombre;
+    string significado;
+};
+
+// Función para mostrar nombres según el género
+void mostrarNombres(const vector<NombreConSignificado>& nombres) {
+    for (size_t i = 0; i < nombres.size(); ++i) {
+        cout << i + 1 << ". " << nombres[i].nombre << " - " << nombres[i].significado << "\n";
+    }
+}
+
+int main() {
+    // Definir listas de nombres con sus significados para mujer y hombre
+    vector<NombreConSignificado> nombresMujer = {
+        {"Anaís", "Llena de gracia"},
+        {"Celeste", "Celestial, divina"},
+        {"Delfina", "Delphinus, delfín"},
+        {"Giselle", "Juramento"},
+        {"Inés", "Casta, pura"},
+        {"Julieta", "Juvenil, llena de juventud"},
+        {"Magdalena", "Elevada, magnífica"},
+        {"Marina", "Perteneciente al mar"},
+        {"Olivia", "Olivero, símbolo de paz"},
+        {"Paloma", "Mensajera de paz"},
+        {"Renata", "Renacida"},
+        {"Romina", "Romana, ciudadana de Roma"},
+        {"Sofía", "Sabiduría"},
+        {"Úrsula", "Pequeña osa"},
+        {"Valeria", "Valiente"},
+        {"Ximena", "Oye, escucha"},
+        {"Yasmin", "Jazmín, flor fragante"},
+        {"Zara", "Princesa"},
+        {"Zoe", "Vida"},
+        {"Adriana", "Natural de Adria"},
+        {"Carmen", "Jardín, huerto"},
+        {"Diana", "Divina, celestial"},
+        {"Elena", "Resplandeciente, brillante"},
+        {"Gloria", "Gloria, fama"},
+        {"Isidro", "Don de Isis"},
+        {"Kira", "Señora, reina"},
+        {"Luciana", "Luminosa, resplandeciente"},
+        {"Manuel", "Dios está con nosotros"},
+        {"Nadia", "Esperanza"},
+        {"Paula", "Pequeña"}
+    };
+
+    vector<NombreConSignificado> nombresHombre = {
+        {"Alessandro", "Defensor de la humanidad"},
+        {"Bastian", "Venerable, sublime"},
+        {"Carlos", "Hombre fuerte, varonil"},
+        {"Dante", "Duradero, constante"},
+        {"Diego", "Suplantador"},
+        {"Felipe", "Amante de los caballos"},
+        {"Gael", "Forastero generoso"},
+        {"Iker", "Visitante"},
+        {"Iván", "Dios es misericordioso"},
+        {"Leandro", "León valiente"},
+        {"Lorenzo", "Coronado de laurel"},
+        {"Marco", "Guerrero, dedicado a Marte"},
+        {"Maximiliano", "El más grande"},
+        {"Noah", "Descanso, consuelo"},
+        {"Pablo", "Pequeño, humilde"},
+        {"Rafael", "Dios ha curado"},
+        {"Rodrigo", "Poderoso en la fama"},
+        {"Salvador", "Salvador, liberador"},
+        {"Simón", "Oye, escucha"},
+        {"Tomás", "Gemelo"},
+        {"Vicente", "Victorioso, conquistador"},
+        {"Yael", "Cabra montés"},
+        {"Zenón", "Regalo de Zeus"},
+        {"Zachary", "Recordado por Dios"},
+        {"Amara", "Inmortal"},
+        {"Bruno", "Marrón, color café"},
+        {"Dario", "Poseedor de bienes"},
+        {"Eduardo", "Guardián de las riquezas"},
+        {"Fabián", "Cultivador de habas"},
+        {"Horacio", "Hora, momento oportuno"},
+        {"Jaime", "Suplantador"},
+        {"Lautaro", "Céfiro, viento del sur"},
+        {"Oscar", "Lanza de dioses"},
+        {"Quirino", "Guerrero"},
+        {"Ricardo", "Poderoso, valiente gobernante"},
+        {"Santiago", "Suplantador"},
+        {"Teodoro", "Regalo de Dios"},
+        {"Walter", "Gobernante del ejército"},
+        {"Xenia", "Hospitalidad"}
+    };
+
+    // Mostrar menú
+    while (true) {
+        cout << "\n=== Menú de Nombres ===\n";
+        cout << "1. Mostrar nombres de mujer\n";
+        cout << "2. Mostrar nombres de hombre\n";
+        cout << "3. Buscar información de un nombre\n";
+        cout << "4. Salir\n";
+        cout << "Ingrese la opción deseada (1-4): ";
+
+        int opcion;
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                // Mostrar nombres de mujer
+                cout << "\n=== Nombres de Mujer ===\n";
+                mostrarNombres(nombresMujer);
+                break;
+            case 2:
+                // Mostrar nombres de hombre
+                cout << "\n=== Nombres de Hombre ===\n";
+                mostrarNombres(nombresHombre);
+                break;
+            case 3:
+                // Buscar información de un nombre
+                cout << "Ingrese el género (1 para mujer, 2 para hombre): ";
+                int genero;
+                cin >> genero;
+
+                if (genero == 1) {
+                    cout << "\n=== Nombres de Mujer ===\n";
+                    mostrarNombres(nombresMujer);
+                } else if (genero == 2) {
+                    cout << "\n=== Nombres de Hombre ===\n";
+                    mostrarNombres(nombresHombre);
+                } else {
+                    cout << "Género no válido.\n";
+                }
+                break;
+            case 4:
+                // Salir del programa
+                cout << "¡Adiós!\n";
+                return 0;
+            default:
+                cout << "Opción no válida. Inténtelo de nuevo.\n";
+        }
+    }
+
+    return 0;
+}
